@@ -30,6 +30,6 @@ $('[name="calc"] #buy').on('change', e => {
   data.buy = b;
   data.even = b / 0.95;
   data.post = data.even * 1.05;
-  data.profit = data.post - data.even;
+  data.profit = data.post * 0.95 - data.buy;
   updateValues();
 });
