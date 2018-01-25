@@ -23,6 +23,10 @@ const readVal = e => {
   return e.val() || 0;
 }
 
+const updateProfit = () => {
+  data.profit = data.post * 0.95 - data.buy;
+}
+
 
 
 $('[name="calc"] #buy').on('change', e => {
@@ -30,6 +34,20 @@ $('[name="calc"] #buy').on('change', e => {
   data.buy = b;
   data.even = b / 0.95;
   data.post = data.even * 1.05;
-  data.profit = data.post * 0.95 - data.buy;
+  updateProfit();
+  updateValues();
+});
+
+$('[name="calc"] #even').on('change', e => {
+  data.even = readVal(e.currentTarget);
+  data.buy = data.even * 0.95;
+  data.post = data.even * 1.05
+  updateProfit();
+  updateValues();
+});
+
+$('[name="calc"] #post').on('change', e => {
+  data.post = readVal(e.currentTarget);
+  updateProfit();
   updateValues();
 });
