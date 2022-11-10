@@ -31,7 +31,7 @@ const updateValues = () => {
   });
 
   const dublicateIdxs = [];
-  for (let idx = 1; idx < history.length; idx++) {
+  for (let idx = 0; idx < history.length; idx++) {
     const dublicate = Object.entries(data).every(([key, value]) => history[idx][key] === value);
     if (dublicate) {
       dublicateIdxs.push(idx);
