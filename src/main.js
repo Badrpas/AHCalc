@@ -30,7 +30,6 @@ const updateValues = () => {
     $(`#${key}`).val(value.toFixed(2)).html(value.toFixed(2));
   });
 
-  history.push({...data});
   const dublicateIdxs = [];
   for (let idx = 1; idx < history.length; idx++) {
     const dublicate = Object.entries(data).every(([key, value]) => history[idx][key] === value);
@@ -40,8 +39,10 @@ const updateValues = () => {
   }
   while (dublicateIdxs.length) {
     const idx = dublicateIdxs.pop();
+    console.log('rm', idx);
     history.splice(idx, 1);
   }
+  history.push({...data});
 
   renderHistory();
   cacheData();
