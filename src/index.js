@@ -1,5 +1,5 @@
 import $ from 'jquery';
 
 $(() => {
-  require('./main');
+  import('./main');
 });

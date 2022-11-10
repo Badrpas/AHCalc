@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>AH Calc</title>
-  <script src="./index.js"></script>
+  <script type="module" src="./src/index.js"></script>
 </head>
 
 <body>
@@ -21,14 +21,17 @@
     <br>
     <label for="post">post: </label>
     <input type="text" name="" id="post">
-    <label >(<span id="profit"></span>)</label>
+    <label>(<span id="profit"></span>) x</label>
+
+    <input type="text" name="" id="multiplier">
+    <label> = <span id="totalprofit"></span></label>
 
   </div>
 
   <div name="history">
-    <ul id="history">
+    <table id="history">
 
-    </ul>
+    </table>
   </div>
   
 </body>
