@@ -1,4 +1,5 @@
 import $ from 'jquery';
+import { init as initEvals } from './evals';
 
 const data = {
   buy: 0,
@@ -98,9 +99,8 @@ updateValues();
 //renderHistory();
 
 $('[name="calc"] #buy').on('change', e => {
-  let b = readVal(e.currentTarget);
-  data.buy = b;
-  data.even = b / 0.95;
+  data.buy = readVal(e.currentTarget);
+  data.even = data.buy / 0.95;
   data.post = data.even * 1.05;
   updateProfit();
   updateValues();
@@ -125,3 +125,9 @@ $('[name="calc"] #multiplier').on('change', e => {
   updateProfit();
   updateValues();
 });
+
+initEvals(data, () => {
+  updateProfit();
+  updateValues();
+});
+
