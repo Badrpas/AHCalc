@@ -19,6 +19,7 @@ export const init = (data, updateData) => {
   };
 
   const $evals = $('#evals');
+  // restore
   for (const code of codeBlocks) addEval(code);
 
   const $btn = $('#add-eval');
@@ -31,17 +32,27 @@ export const init = (data, updateData) => {
     const $container = $('<div>');
     const $eval = $('<textarea>').val(text);
     $container.append($eval);
+    const $result = $('<input>').prop('disabled', true);
+    $container.append($result);
     evals.push($eval);
     $evals.prepend($container);
+
     const run = () => {
       data;
-      eval($eval.val());
-      updateData();
+      try {
+        const result = eval($eval.val());
+        updateData();
+        $result.val(result);
+      } catch (err) {
+        $result.val(err.message);
+        console.error(err);
+      }
     };
     $eval.on('input', updateCodeBlocks);
     $eval.on('keydown', (e) => {
       if (e.which === 13 && e.ctrlKey) run();
     });
+
 
     const $run = $('<button>').html('Run').addClass('run');
     $container.append($run);
