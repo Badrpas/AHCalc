@@ -28,7 +28,7 @@ const restoreCache = () => {
 
 const updateValues = () => {
   Object.entries(data).forEach(([key, value]) => {
-    $(`#${key}`).val(value.toFixed(2)).html(value.toFixed(2));
+    $(`#${key}`).val(value?.toFixed(2)||'').html(value?.toFixed(2)||'');
   });
 
   const dublicateIdxs = [];
